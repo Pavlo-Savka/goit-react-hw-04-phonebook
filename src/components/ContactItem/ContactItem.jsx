@@ -5,7 +5,7 @@ import css from './ContactItem.module.css';
 class ContactItem extends Component { 
     render() {
         return (
-            <li key={this.props.id} className={css['contact-item']}>
+            <li id={this.props.id} className={css['contact-item']}>
                 {this.props.name}: {this.props.number}
                 <button className={css.itemBtn} type='button' onClick={() => this.props.itemToDelete(this.props.id)}>Delete</button>
             </li>

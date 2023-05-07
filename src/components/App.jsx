@@ -14,6 +14,21 @@ class App extends Component {
   ],
     filter: '',
   };
+  componentDidMount() {
+    const parsedContacts = JSON.parse(localStorage.getItem("contacts"));
+    if (parsedContacts) {
+      parsedContacts.length > 0 ? this.setState({ contacts: parsedContacts }) :
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+    } else {
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+    };
+}
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
+    }
+  }
 
   formSubmitHandler = (data) => {
    const nameExists = this.state.contacts.some(
