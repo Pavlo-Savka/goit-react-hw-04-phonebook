@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactItem.module.css';
 
-class ContactItem extends Component { 
-    render() {
+function ContactItem(props) { 
         return (
-            <li id={this.props.id} className={css['contact-item']}>
-                {this.props.name}: {this.props.number}
-                <button className={css.itemBtn} type='button' onClick={() => this.props.itemToDelete(this.props.id)}>Delete</button>
+            <li id={props.id} className={css['contact-item']}>
+                {props.name}: {props.number}
+                <button className={css.itemBtn} type='button' onClick={() => props.itemToDelete(props.id)}>Delete</button>
             </li>
 
         );
     }
-}
 
 export default ContactItem;
 
